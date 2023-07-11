@@ -7,28 +7,29 @@ using namespace std;
 class Solution{
     public:
     //You need to complete this fucntion
+     int m=1e9+7;
     
+    long long fun(int n, int r)
+    {
+        if(r==0)
+        return 1;
+        else if(r==1)
+        return n;
+        else if(r%2==0)
+        {
+            long long temp=fun(n,r/2);
+            return (temp*temp)%m;
+        }
+        else
+        {
+             long long temp=fun(n,r/2);
+            return (((temp*temp)%m)*n)%m;
+        }
+    }
     long long power(int N,int R)
     {
        //Your code here
-       
-        if(R==0) return 1;
-
-        long ans=power(N,R/2);
-
-        ans=ans*ans%1000000007;
-
-        if(R%2==0) return ans;
-
-        return ans*N%1000000007;
-
-        
-
-        
-
-        
-
-    
+       return fun( N,R);
         
     }
 
